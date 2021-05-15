@@ -35,17 +35,17 @@ public class QuickSort {
         int j = right + 1;
         int pivot = nums[left];
         while (true) {
-            while (nums[++i] > pivot) {
-                if (i > right) {
+            while (nums[++i] < pivot) {
+                if (i == right) {
                     break;
                 }
             }
-            while (nums[--j] < pivot) {
-                if (j < left) {
+            while (nums[--j] > pivot) {
+                if (j == left) {
                     break;
                 }
             }
-            if (i == j) {
+            if (i >= j) {
                 break;
             }
             swap(nums, i, j);

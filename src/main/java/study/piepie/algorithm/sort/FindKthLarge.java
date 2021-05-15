@@ -31,20 +31,21 @@ public class FindKthLarge {
         int pivot = nums[low];
         while (true) {
             while (nums[++i] < pivot) {
-                if (i > high) {
+                if (i == high) {
                     break;
                 }
             }
             while (nums[--j] < pivot) {
-                if (j < low) {
+                if (j == low) {
                     break;
                 }
             }
-            if (i == j) {
+            if (i >= j) {
                 break;
             }
             swap(nums, i, j);
         }
+        swap(nums, j, low);
         return j;
     }
 
