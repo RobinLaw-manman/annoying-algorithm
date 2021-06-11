@@ -11,6 +11,7 @@ public class Sudoku {
         if (c == n) {
             return backTrack(boards, r + 1, 0);
         }
+        // r==m时最后一行m-1已经遍历完了，所以找到一个可行解
         if (r == m) {
             return true;
         }
