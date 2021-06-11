@@ -9,7 +9,7 @@ public class Sudoku {
         int m = 9;
         int n = 9;
         if (c == n) {
-            return backTrack(boards, r + 1, c);
+            return backTrack(boards, r + 1, 0);
         }
         if (r == m) {
             return true;
