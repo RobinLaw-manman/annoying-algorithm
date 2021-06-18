@@ -22,6 +22,7 @@ public class FindKthLarge {
         return -1;
     }
 
+    // 分区，类似快排
     public static int partition(int[] nums, int low, int high) {
         if (low == high) {
             return low;
