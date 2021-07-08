@@ -55,12 +55,30 @@ public class BinarySearch {
         return right;
     }
 
+    public static int leftBound2(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] >= target) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
     public static void main(String[] args) {
-        int[] nums = new int[] {1, 2, 2, 2, 3};
+//        int[] nums = new int[] {1, 2, 2, 2, 3};
+        int[] nums = new int[]{2,3,5,7};
         int index = searh(nums, 2);
         System.out.println(index);
-        int left = leftBound(nums, 2);
-        System.out.println(left);
+        int left = leftBound2(nums, 4);
+        System.out.println("left bound: " + left);
         int right = rightBound(nums, 2);
         System.out.println(right);
     }
