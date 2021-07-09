@@ -69,17 +69,42 @@ public class BinarySearch {
                 left = mid + 1;
             }
         }
+//        if (left == nums.length) {
+//            return -1;
+//        }
+//        return nums[left] == target ? left : -1;
         return left;
+    }
+
+    public static int rightBound2(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > target) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+//        if (left == 0) return -1;
+//        return nums[left - 1] == target ? left - 1 : -1;
+        return left - 1;
     }
 
     public static void main(String[] args) {
 //        int[] nums = new int[] {1, 2, 2, 2, 3};
-        int[] nums = new int[]{2,3,5,7};
+        int[] nums = new int[]{2, 3, 5, 7};
         int index = searh(nums, 2);
         System.out.println(index);
         int left = leftBound2(nums, 4);
+        // 2==> 左侧搜索，如果target不存在返回大于target的第一个数5对应的索引
         System.out.println("left bound: " + left);
-        int right = rightBound(nums, 2);
-        System.out.println(right);
+        // 1==> 右侧搜索，如果target不存在返回小于target的第一个数3对应的索引
+        int right = rightBound2(nums, 4);
+        System.out.println("right bound: " + right);
     }
 }
