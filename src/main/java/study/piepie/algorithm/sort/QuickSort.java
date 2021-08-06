@@ -65,6 +65,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
+        // i++ 和 ++i还有一个区别在于给其他变量赋值的时候，i++把未自增之前的值赋给其他变量，而++i是自增之后的
         // 结论while(i++) 比 while(++i)多执行一次操作，i多加了1
         int i = 0;
         while (i++ < 3) { // 0 < 3 ---> i=i+1=1 ----> 执行循环体
