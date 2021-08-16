@@ -11,18 +11,38 @@ import java.util.List;
 public class SubsetPermutationCombination {
     static List<LinkedList<Integer>> res = new ArrayList();
 
-    public static List<LinkedList<Integer>> subsets(int[] nums) {
-        backtrack(nums, 0, new LinkedList<>());
+    public static List<LinkedList<Integer>> subsets(int n) {
+        backtrack(n, 0, new LinkedList<>());
         return res;
     }
 
-    public static void backtrack(int[] nums, int start, LinkedList<Integer> subset) {
+    /**
+     * 组合
+     * @param n
+     * @param start
+     * @param subset
+     */
+    public static void backtrack(int n, int start, LinkedList<Integer> subset) {
+        // 和二叉树的遍历一样，关注当前节点该干什么
+        // 当前节点就是已经加入了当前元素的subset
         LinkedList<Integer> sub = new LinkedList<>(subset);
+        // 前序遍历，当前节点要做的就是把当前节点及之前的元素当成集合放入结果res
         res.add(sub);
-        for (int i = start; i < nums.length; i++) {
+        // 递归之后的节点（类似二叉树遍历左右子树）
+        // 把子节点加入，并且子节点的子节点的起始位置
+        for (int i = start; i < n; i++) {
             sub.add(i);
-            backtrack(nums, i + 1, sub);
+            backtrack(n, i + 1, sub);
+            // 回溯和树的遍历区别在此，完成当前节点的事情之后
+            // 从路径里面删掉当前节点，就会在循环中处理下一个孩子
+            // 类似遍历完左子树后处理右子树
             sub.pollLast();
+        }
+    }
+
+    public static void backtrack(int n, int start, int k, LinkedList<Integer> sub) {
+        if (k == sub.size()) {
+            res.add(new LinkedList<>(sub));
         }
     }
 }
