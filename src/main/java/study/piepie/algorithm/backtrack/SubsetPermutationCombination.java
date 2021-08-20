@@ -17,7 +17,7 @@ public class SubsetPermutationCombination {
     }
 
     /**
-     * 组合
+     * 子集
      * @param n
      * @param start
      * @param subset
@@ -31,18 +31,31 @@ public class SubsetPermutationCombination {
         // 递归之后的节点（类似二叉树遍历左右子树）
         // 把子节点加入，并且子节点的子节点的起始位置
         for (int i = start; i < n; i++) {
-            sub.add(i);
-            backtrack(n, i + 1, sub);
+            subset.add(i);
+            backtrack(n, i + 1, subset);
             // 回溯和树的遍历区别在此，完成当前节点的事情之后
             // 从路径里面删掉当前节点，就会在循环中处理下一个孩子
             // 类似遍历完左子树后处理右子树
-            sub.pollLast();
+            subset.pollLast();
         }
     }
 
+    /**
+     * 组合
+     * @param n
+     * @param start
+     * @param k
+     * @param sub
+     */
     public static void backtrack(int n, int start, int k, LinkedList<Integer> sub) {
         if (k == sub.size()) {
             res.add(new LinkedList<>(sub));
+            return; // 很关键 不需要在遍历后面的子节点了
+        }
+        for (int i = start; i< n; i++) {
+            sub.add(i);
+            backtrack(n, i+1, k, sub);
+            sub.pollLast();
         }
     }
 }
