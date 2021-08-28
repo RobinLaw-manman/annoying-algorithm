@@ -18,6 +18,7 @@ public class SubsetPermutationCombination {
 
     /**
      * 子集
+     *
      * @param n
      * @param start
      * @param subset
@@ -42,6 +43,7 @@ public class SubsetPermutationCombination {
 
     /**
      * 组合
+     *
      * @param n
      * @param start
      * @param k
@@ -52,10 +54,29 @@ public class SubsetPermutationCombination {
             res.add(new LinkedList<>(sub));
             return; // 很关键 不需要在遍历后面的子节点了
         }
-        for (int i = start; i< n; i++) {
+        for (int i = start; i < n; i++) {
             sub.add(i);
-            backtrack(n, i+1, k, sub);
+            backtrack(n, i + 1, k, sub);
             sub.pollLast();
+        }
+    }
+
+    /**
+     * 排列
+     * @param n
+     * @param sub
+     */
+    public static void backtrack(int n, LinkedList<Integer> sub) {
+        LinkedList<Integer> tmp = new LinkedList<>(sub);
+        if (tmp.size() == n) {
+            res.add(tmp);
+        }
+        for (int i = 0; i < n; i++) {
+            if (!tmp.contains(i)) {
+                tmp.add(i);
+                backtrack(n, tmp);
+                tmp.pollLast();
+            }
         }
     }
 }
