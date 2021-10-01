@@ -43,15 +43,42 @@ public class ReverseSolution {
         return new Node[]{b, a};
     }
 
-    public static void main(String[] args) {
-        Node head = new Node(1);
-        Node tail = new Node(2);
-        head.setNext(tail);
+    public static Node reverse(Node head) {
+        Node pre = null;
+        Node current = head;
+        while (current != null) {
+            Node next = current.getNext();
+            current.setNext(pre);
+            pre = current;
+            current = next;
+        }
+        return pre;
+    }
 
-        Node newHead = reverse(head, tail)[0];
-        while (newHead != null) {
-            System.out.println(newHead.getValue());
-            newHead = newHead.getNext();
+    public static void main(String[] args) {
+//        Node head = new Node(1);
+//        Node tail = new Node(2);
+//        head.setNext(tail);
+//
+//        Node newHead = reverse(head, tail)[0];
+//        while (newHead != null) {
+//            System.out.println(newHead.getValue());
+//            newHead = newHead.getNext();
+//        }
+
+
+        Node first = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+        Node forth = new Node(4);
+        first.setNext(second);
+        second.setNext(third);
+        third.setNext(forth);
+
+        Node newHead2 = reverse(first);
+        while (newHead2 != null) {
+            System.out.println(newHead2.getValue());
+            newHead2 = newHead2.getNext();
         }
     }
 }
