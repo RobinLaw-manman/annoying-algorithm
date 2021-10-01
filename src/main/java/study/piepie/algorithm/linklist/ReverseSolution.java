@@ -55,6 +55,17 @@ public class ReverseSolution {
         return pre;
     }
 
+    public static Node reverse2(Node node) {
+        if (node.getNext() == null) {
+            return node;
+        }
+        Node next = node.getNext();
+        Node newHead = reverse2(node.getNext());
+        next.setNext(node);
+        node.setNext(null);
+        return newHead;
+    }
+
     public static void main(String[] args) {
 //        Node head = new Node(1);
 //        Node tail = new Node(2);
@@ -75,7 +86,7 @@ public class ReverseSolution {
         second.setNext(third);
         third.setNext(forth);
 
-        Node newHead2 = reverse(first);
+        Node newHead2 = reverse2(first);
         while (newHead2 != null) {
             System.out.println(newHead2.getValue());
             newHead2 = newHead2.getNext();
