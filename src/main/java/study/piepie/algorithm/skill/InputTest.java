@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * @author Robin
@@ -57,5 +58,31 @@ public class InputTest {
             }
         }
         TreeNode head = tree[root];
+    }
+
+
+    private static boolean isBinarySearchTree(TreeNode node) {
+        if(node == null){
+            return true;
+        }
+        int pre = Integer.MIN_VALUE;
+        Stack<TreeNode> s = new Stack<>();
+
+        while(!s.isEmpty() || node != null){
+            while(node != null){
+                s.push(node);
+                node = node.left;
+            }
+            node = s.pop();
+            if(node == null){
+                break;
+            }
+            if(pre > node.value){
+                return false;
+            }
+            pre = node.value;
+            node = node.right;
+        }
+        return true;
     }
 }
