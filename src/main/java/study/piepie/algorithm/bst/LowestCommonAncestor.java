@@ -11,6 +11,9 @@ public class LowestCommonAncestor {
         if (root == null) {
             return null;
         }
+        if (p == root || q==root) {
+            return root;
+        }
         BstNode left = lowestCommonAncestor(root.getLeft(), p, q);
         BstNode right = lowestCommonAncestor(root.getRight(), p, q);
 
