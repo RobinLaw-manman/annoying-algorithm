@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class Node {
     private int value;
-    private Node next;
+    public Node next;
 
     public Node(int val) {
         value = val;
