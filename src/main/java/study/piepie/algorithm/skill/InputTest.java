@@ -5,6 +5,8 @@ import study.piepie.algorithm.entity.TreeNode;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -14,6 +16,7 @@ import java.util.Stack;
  **/
 public class InputTest {
     public static void main(String[] args) throws IOException {
+        PriorityQueue<Integer> min = new PriorityQueue<>(Comparator.comparingInt(a -> a));
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 //        String[] s = bufferedReader.readLine().split(" ");
 //        int n = Integer.parseInt(s[0]);
