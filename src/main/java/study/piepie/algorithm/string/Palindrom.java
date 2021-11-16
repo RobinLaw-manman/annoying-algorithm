@@ -5,28 +5,28 @@ package study.piepie.algorithm.string;
  * @date 2021-11-16 14:29
  **/
 public class Palindrom {
-    public static int getMaxLengthOfPalindrom(String s) {
-        int max = 0;
+    public static String getMaxLengthOfPalindrom(String s) {
+        String longestPalindrom = "";
         for (int i = 0; i < s.length(); i++) {
-            int maxLength = Math.max(lengthOfPalindrom(s, i, i+1), lengthOfPalindrom(s, i, i));
-            max = Math.max(max, maxLength);
+            String s1 = palindrom(s, i, i);
+            String s2 = palindrom(s, i, i + 1);
+            longestPalindrom =
+                    (longestPalindrom.length() < s1.length()) ? (s1.length() < s2.length() ? s2 : s1) : longestPalindrom.length() < s2.length() ? s2 : longestPalindrom;
         }
-        return max;
+        return longestPalindrom;
     }
-    public static int lengthOfPalindrom(String s, int midOne, int midTwo) {
-        if (midTwo>=s.length() || s.charAt(midOne) != s.charAt(midTwo)) {
-            return 0;
+
+    public static String palindrom(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
         }
-        int length = (midOne == midTwo ? 1 : 2);
-        while (--midOne >=0 && ++midTwo < s.length() && s.charAt(midOne) == s.charAt(midTwo)) {
-            length+=2;
-        }
-        return length;
+        return s.substring(left + 1, right);
     }
 
     public static void main(String[] args) {
-        String s = "adaegffg";
-        int longest = getMaxLengthOfPalindrom(s);
+        String s = "adaegffh";
+        String longest = getMaxLengthOfPalindrom(s);
         System.out.println(longest);
     }
 }
