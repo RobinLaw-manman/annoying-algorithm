@@ -90,9 +90,14 @@ public class BinarySearch {
                 left = mid + 1;
             }
         }
-//        if (left == 0) return -1;
-//        return nums[left - 1] == target ? left - 1 : -1;
-        return left - 1;
+        if (left == 0) return -1;
+        return nums[left - 1] == target ? left - 1 : -1;
+        // 最左侧的值就是target的时候，mid先收缩到left的位置。所以left+1到了right的位置
+        // left==right结束循环。这个时候left在索引1。left-1就是正确值。
+        // 所以left==0肯定是未找到结果。这时应该是return -1
+        // 因为只有nums[mid]>target才会将right定位到mid的位置。就是最左边
+//        return left - 1;
+        // 同理只有nums[mid]<=target的时候才会向右收缩。所以要判断left-1是不是==target
     }
 
     public static void main(String[] args) {
