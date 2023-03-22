@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Node {
-    private int value;
+    public int value;
     public Node next;
 
     public Node(int val) {

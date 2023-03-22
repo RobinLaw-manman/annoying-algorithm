@@ -77,7 +77,8 @@ public class QuickSort {
             System.out.println("hello j:"+ j); // 1 2
         }
         System.out.println(j); // 3
-
+// 所以while(i++ < 3) 循环体里面的i值和参与while判断<3的值不一样，
+// 循环体里面的值大1，是加一之后的值。循环条件判断的值是未加1的
         int[] nums = new int[]{1, 2};
         System.out.println(nums[0] + " " + nums[1]);
         swap(nums, 0, 1);

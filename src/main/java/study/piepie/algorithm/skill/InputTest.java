@@ -28,7 +28,19 @@ public class InputTest {
 //        while(sc.hasNext()) {
 //            System.out.println("Input from keyboard:" + sc.next());
 //        }
-
+        //输入描述:
+        //第一行两个数n,root，分别表示二叉树有n个节点，第root个节点时二叉树的根
+        //接下来共n行，第i行三个数val_i,left_i,right_i，
+        //分别表示第i个节点的值val是val_i,左儿子left是第left_i个节点，右儿子right是第right_i个节点。
+        //节点0表示空。
+        //1<=n<=100000,保证是合法的二叉树
+        //输入
+        //5 1
+        //5 2 3
+        //1 0 0
+        //3 4 5
+        //4 0 0
+        //6 0 0
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String[] s = reader.readLine().split(" ");
@@ -76,15 +88,15 @@ public class InputTest {
                 s.push(node);
                 node = node.left;
             }
-            node = s.pop();
+            node = s.pop();// 左子树到底了POP，处理当前节点
             if(node == null){
                 break;
             }
-            if(pre > node.value){
+            if(pre > node.value){ // 中序遍历
                 return false;
             }
             pre = node.value;
-            node = node.right;
+            node = node.right;// 遍历右子树
         }
         return true;
     }
